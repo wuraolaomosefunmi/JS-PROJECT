@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap-5.3.3-dist/js/bootstrap.min.js">
+    <title>sign UP</title>
+</head>
+<body>
+    <style>
+        .d-signup{
+            background-image: url(./img/pexels-monkeytactics-751821.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 590px;
+        }
+        .error{
+          color: red;
+          font-weight: bold;
+          text-align: center;
+        }
+        .congrats{
+          color: green;
+          font-weight: bold;
+          text-align: center;
+        }
+      </style>
+      <body>
+        <section class="d-signup">
+            <div class="container ">
+                <div class="row ">
+                  <div class="" style="width: 500px;margin-left: auto;margin-right: auto;">
+                    <div class=" mt-5">
+                      <h2 class="text-center text-light">Sign up Form</h2>
+                      <p class="error"></p>
+                      <p class="congrats"></p>
+                      <form id="form" action="" method="post">
+                        <div class="mb-3">
+                          <input
+                            type="text"
+                            name=""
+                            class="form-control"
+                            placeholder="Username"
+                            id="username"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type="email"
+                            name=""
+                            id="email"
+                            class="form-control"
+                            placeholder="Email"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type=""
+                            name=""
+                            id="phone"
+                            class="form-control"
+                            placeholder="phone number"
+                          />
+                        </div>
+                        <div class="mb-3">
+                          <input
+                            type="password"
+                            name=""
+                            id="password"
+                            class="form-control"
+                            placeholder="Password"
+                          />
+                        </div>
+                        <div class="d-grid gap-2">
+                          <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </section>
+    
+    
+        <script>
+            const myForm = document.getElementById("form");
+            const myUsername = document.getElementById("username");
+            const myEmail = document.getElementById("email");
+            const myPhone = document.getElementById('phone')
+            const myPassword = document.getElementById("password");
+            const errorMessage = document.querySelector('.error');
+            const congratsMessage = document.querySelector('.congrats')
+            // Add an event listener
+            myForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if(myUsername.value.length === 0 && myEmail.value.length === 0 && myPassword.value.length === 0 && myPhone.value.length === 0){
+                    errorMessage.innerHTML = 'Please enter your details.'
+
+                }
+                else if(myUsername.value.length === 0){
+                  errorMessage.innerHTML = 'please enter your username'
+                }else if(myEmail.value.length === 0){
+                  errorMessage.innerHTML = 'please enter your email'
+                }else if(myPhone.value.length === 0){
+                  errorMessage.innerHTML = 'please enter your Phone Number'
+                }else if(isNaN(myPhone.value)){
+                  errorMessage.innerHTML = 'Enter a valid number'
+                }else if(myPassword.value.length === 0){
+                  errorMessage.innerHTML = 'please enter your Password'
+                }
+                 else if(myPassword.value.length < 6){
+                  errorMessage.innerHTML = 'password must not be less than 6 characters'
+                }else{
+                  congratsMessage.innerHTML = 'congratulations...form successfully submitted'
+                  // errorMessage.style.display = "none"
+                  localStorage.setItem('username', myUsername.value);
+                    localStorage.setItem('email',myEmail.value);
+                    localStorage.setItem('password',myPassword.value);
+                    window.location.href = 'signin.html'
+                }
+            });
+        </script>
+      </body>
+    </html>
+    
+</body>
+</html>
